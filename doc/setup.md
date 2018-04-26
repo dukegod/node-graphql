@@ -9,3 +9,5 @@ npm i express express-graphql graphql  -S
 
 
 [参考demo](https://github.com/naihe138/GraphQL-demo)
+
+[demo](https://github.com/codediger/graphql-express-nodejs)
