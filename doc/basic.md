@@ -1,3 +1,8 @@
+---
+title: Graphgl
+date: 2018-04-19
+tags: [Graphgl]
+---
 
 传统的RESTFUL，客户端不能个性化的收集数据。对外输出的接口比较强依赖后端的API，可能需要不断的扩展API接口。
 
@@ -9,12 +14,15 @@
 + 客户端组建想要的数据API
 + 丰富的开源环境与社区
 
+<!-- more -->
+
 Graphal需要自身的缺点：
 
 + GraphQL缓存不容易
 + 检测和解决n+1问题
 
 什么是n+1问题： 
+
 如果你没有优化你的GraphQL查询，你可能在一次query进行多次查询。没有合适的缓存和批量处理系统，每次确定字段的时候服务器都会响应一次请求
 
 + 鉴权问题
@@ -92,10 +100,11 @@ name: String! @defaultValue(value: "new blogpost")
 + [graphql-js](https://github.com/graphql/graphql-js)
 + [graphql-yoga:](https://github.com/graphcool/graphql-yoga) 这个算是个脚手架吧！
 
+[项目参考](https://github.com/dukegod/node-graphql)
 
 #### 更多资料
 
-[ graphgl.js语法 ](http://taobaofed.org/blog/2016/03/10/graphql-in-depth/)
+[ graphgl.js语法 ](http://taobaofed.org/blog/2016/03/10/graphql-in-depth/)    
 [基于Electron的Graphql软件](https://github.com/skevy/graphiql-app)   
 [webpack loader](https://github.com/Houfeng/gq-loader)    
 [官网](http://graphql.org/)   
@@ -106,3 +115,5 @@ name: String! @defaultValue(value: "new blogpost")
 [graphql-boilerplates-快速搭建应用](https://github.com/graphql-boilerplates)     
 [howtographql-快速入门教程](https://www.howtographql.com/)     
 [top-5-reasons-to-use-graphql](https://blog.graph.cool/top-5-reasons-to-use-graphql-b60cfa683511)     
+[build-a-simple-graphql-api-server-with-express-and-nodejs](https://scotch.io/@codediger/build-a-simple-graphql-api-server-with-express-and-nodejs)   
+[graphql-server-basics-the-schema](https://blog.graph.cool/graphql-server-basics-the-schema-ac5e2950214e)   

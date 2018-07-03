@@ -14,7 +14,7 @@ router.get('/hello',  (req, res, next) => {
   // console.log(helloGl);
   let title;
   helloGl.then(re => {
-    title = re;
+    title = re.data.hello;
     console.log(title);
     res.render('index', {
       title: title
