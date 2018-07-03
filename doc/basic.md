@@ -1,8 +1,3 @@
----
-title: Graphgl
-date: 2018-04-19
-tags: [Graphgl]
----
 
 传统的RESTFUL，客户端不能个性化的收集数据。对外输出的接口比较强依赖后端的API，可能需要不断的扩展API接口。
 

@@ -4,6 +4,7 @@
  * liuhui
  */
 const graphqlHTTP = require('express-graphql');
+
 const { 
   buildSchema, 
   graphql,
@@ -21,7 +22,7 @@ const schema = buildSchema(`
 `);
 
 // The root provides a resolver function for each API endpoint
-const root = {
+const global = {
   hello: () => {
     return 'Hello world!';
   },
@@ -33,7 +34,7 @@ const root = {
 //   graphiql: true,
 // }));
 
-const helloGl =  graphql(schema, 'hello', root);
+const helloGl =  graphql(schema, '{ hello }', global);
 
 
 // let schema2 = new GraphQLSchema({
