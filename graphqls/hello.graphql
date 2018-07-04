@@ -1,0 +1,9 @@
+
+type Hello {
+  name: String
+}
+
+type Query {
+  name: String
+}
+

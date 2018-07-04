@@ -3,8 +3,6 @@
  * 2018年04月25日15:55:57
  * liuhui
  */
-const graphqlHTTP = require('express-graphql');
-
 const { 
   buildSchema, 
   graphql,

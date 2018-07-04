@@ -39,6 +39,7 @@ app.use(indexRouter);
 
 // catch 404 and forward to error handler
 app.use((err,req, res, next) => {
+  console.log(req.cookies)
   next(createError(404, err))
 });
 // error handler
