@@ -26,11 +26,6 @@ const global = {
   },
 };
 
-// app.use('/graphql', graphqlHTTP({
-//   schema: schema,
-//   rootValue: root,
-//   graphiql: true,
-// }));
 
 const helloGl =  graphql(schema, '{ hello }', global);
 

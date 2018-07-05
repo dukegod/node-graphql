@@ -22,16 +22,18 @@ Graphal需要自身的缺点：
 + 检测和解决n+1问题
 + 鉴权问题
 
-使用入口令牌(entry tokens)把客户端和响应关联起来。这与我们在REST中遵循的方法非常相似。 我们可以让restful配合graphgl一起使用。
+##### 鉴权问题
 
-**n+1问题：** 
+也就是身份认证与授权访问，可以借鉴restful，通过JWT生成token方案
+
+##### n+1问题 
 
 但我们请求一个字段相关的信息，可能还需要从我们请求的字段中获取某一个字段作为请求体进一步请求服务端数据，最后由客户端统一拼接处理
 
 
 ### GraphQL的核心语法定义
 
-GraphQL 语法定义简洁，高效
+GraphQL 语法简洁，高效
 
 #### Type
 
@@ -115,6 +117,34 @@ interface Item {
 ```
 name: String! @defaultValue(value: "new blogpost")
 ```
+
+
+###  服务器交互三驾马车Query, Mutation, Subscription
+
+Query: 获取服务端数据 
+
+```js
+{
+  user {
+    name,
+    title
+  }
+
+}
+```
+
+Mutation： 创建，更新，删除数据，需要在开头增加‘mutation’ 字段，它的结构和queries几乎一样。
+
+```js
+mutation {
+  createUser (name : “John”, username: ”jo123”) {
+    name
+    username
+  }
+}
+```
+
+Subscription: 用于设置和保存与服务器的实时连接
 
 #### 常用的类库
 

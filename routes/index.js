@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const helloGl = require('./gl-hello')
+const helloGl = require('./hello')
 
 /* GET home page. */
 router.get('/',  (req, res, next) => {
+  console.log(req.cookies)
   res.render('index', {
     title: 'Express Graphql Pro'
   });

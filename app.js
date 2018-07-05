@@ -10,6 +10,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const compression = require('compression');
 const bodyParser = require('body-parser');
+const graphqlHTTP = require('express-graphql');
+
+// 引入语法定义
+const schema = require('./schemas/schema')
+
 
 // 引入路由信息
 const indexRouter = require('./routes/index');
@@ -37,20 +42,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(indexRouter);
 
+
+// 引入graphql图形终端
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  graphiql: true,
+}));
+
 // catch 404 and forward to error handler
 app.use((err,req, res, next) => {
-  console.log(req.cookies)
   next(createError(404, err))
 });
 // error handler
 app.use((err, req, res, next) => {
   // set locals, only providing error in development
-  // console.log(err)
-  // res.locals.message = err;
-  // res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  console.log(err.stack)
-  // render the error page
+  res.locals.message = err;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.status(err.status || 500);
   res.render('error');
 });
