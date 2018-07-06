@@ -107,7 +107,7 @@ const BlogQueryRootType = new GraphQLObjectType({
       resolve: function() {
         return Commands
       }
-    }
+    },
   })
 });
 

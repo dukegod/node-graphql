@@ -1,7 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
+const { 
+  buildSchema, 
+  graphql,
+} = require('graphql');
+
 const helloGl = require('./hello')
+const schema = require('../schemas/schema.js')
 
 /* GET home page. */
 router.get('/',  (req, res, next) => {
@@ -12,7 +18,6 @@ router.get('/',  (req, res, next) => {
 });
 
 router.get('/hello',  (req, res, next) => {
-  // console.log(helloGl);
   let title;
   helloGl.then(re => {
     title = re.data.hello;
@@ -23,13 +28,28 @@ router.get('/hello',  (req, res, next) => {
   }, err => {
     title = 'hellllllll'
   })
+});
 
+console.log(schema)
 
+router.post('/languages',  (req, res, next) => {
+  // console.log(req)
+  // console.log(req.body)
+  graphql(schema, '{languages { name }}')
+  .then((result) => {
+    res.send(JSON.stringify(result, null, 2));
+  })
+});
+
+router.post('/commands',  (req, res, next) => {
+  // console.log(req)
+  // console.log(req.body)
+  graphql(schema, '{commands { id }}')
+  .then((result) => {
+    res.send(JSON.stringify(result, null, 2));
+  })
 });
 
 
-router.get('/user',  (req, res, next) => {
-  res.send('respond with a resource');
-});
 
 module.exports = router;
