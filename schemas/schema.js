@@ -3,6 +3,8 @@ const _ = require('lodash');
 //Authors and Posts get data from JSON Arrays in the respective files.
 const Authors = require('../datas/authors');
 const Posts = require('../datas/posts');
+const Commands = require('../datas/commands');
+const Language = require('../datas/language');
 
 
 /* Here a simple schema is constructed without using the GraphQL query language. 
@@ -11,6 +13,7 @@ const Posts = require('../datas/posts');
 
 let {
   // These are the basic GraphQL types need in this tutorial
+  GraphQLInt,
   GraphQLString,
   GraphQLList,
   GraphQLObjectType,
@@ -21,8 +24,8 @@ let {
 } = require('graphql');
 
 const AuthorType = new GraphQLObjectType({
-  name: "Author",
-  description: "This represent an author",
+  name: 'Author',
+  description: 'This represent an author',
   fields: () => ({
     id: {type: new GraphQLNonNull(GraphQLString)},
     name: {type: new GraphQLNonNull(GraphQLString)},
@@ -31,8 +34,8 @@ const AuthorType = new GraphQLObjectType({
 });
 
 const PostType = new GraphQLObjectType({
-  name: "Post",
-  description: "This represent a Post",
+  name: 'Post',
+  description: 'This represent a Post',
   fields: () => ({
     id: {type: new GraphQLNonNull(GraphQLString)},
     title: {type: new GraphQLNonNull(GraphQLString)},
@@ -46,35 +49,90 @@ const PostType = new GraphQLObjectType({
   })
 });
 
+const languageTypes = new GraphQLObjectType({
+  name: 'language',
+  fields: () => ({
+    name: { type: GraphQLString },
+    der: { 
+      type: GraphQLString,
+      resolve(e){
+        return 'ooo'
+      }
+    },
+  })
+})
+
+const CommandTypes = new GraphQLObjectType({
+  name: 'Commands',
+  description: 'command lists',
+  fields: () => ({
+    id: { type: new GraphQLNonNull(GraphQLInt) },
+    title : { type: new GraphQLNonNull(GraphQLString)},
+    description : { type: new GraphQLNonNull(GraphQLString)},
+    href : { type: new GraphQLNonNull(GraphQLString)},
+    modifyOn : { type: new GraphQLNonNull(GraphQLString)},
+  })
+});
+
+
 // This is the Root Query
 const BlogQueryRootType = new GraphQLObjectType({
-  name: 'BlogAppSchema',
-  description: "Blog Application Schema Query Root",
+  name: 'QuerySchema',
+  description: 'Blog Application Schema Query Root',
   fields: () => ({
     authors: {
       type: new GraphQLList(AuthorType),
-      description: "List of all Authors",
+      description: 'List of all Authors',
       resolve: function() {
         return Authors
       }
     },
     posts: {
       type: new GraphQLList(PostType),
-      description: "List of all Posts",
+      description: 'List of all Posts',
       resolve: function() {
         return Posts
+      }
+    },
+    languages: {
+      type: new GraphQLList(languageTypes),
+      description: 'List of all languageTypes',
+      resolve: function() {
+        return Language
+      }
+    },
+    commands: {
+      type: new GraphQLList(CommandTypes),
+      description: 'List of all Commands',
+      resolve: function() {
+        return Commands
       }
     }
   })
 });
 
+const BlogMutationRootType = new GraphQLObjectType({
+  name: 'MutatioSchema',
+  description: 'mutation',
+  fields: ()=>({
+    languages: {
+      type: new GraphQLList(languageTypes),
+      description: 'List of all languageTypes',
+      resolve: function(name, der) {
+        console.log(name, der)
+        return Language
+      }
+    },
+  })
+})
+
 // This is the schema declaration
 const BlogAppSchema = new GraphQLSchema({
-  query: BlogQueryRootType 
+  query: BlogQueryRootType,
   // If you need to create or updata a datasource, 
   // you use mutations. Note:
   // mutations will not be explored in this post.
-  // mutation: BlogMutationRootType 
+  mutation: BlogMutationRootType 
 });
 
 module.exports = BlogAppSchema;

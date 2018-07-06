@@ -24,7 +24,9 @@ Graphal需要自身的缺点：
 
 ##### 鉴权问题
 
-也就是身份认证与授权访问，可以借鉴restful，通过JWT生成token方案
+也就是身份认证与授权访问，可以借鉴`REST API`，认证通常是借由` header `处理的，其中包含一个` auth token `用于识别发出请求的用户。  
+`Express` 中间件会处理这些 `header`，并将认证数据放进 `Express` 的 `request` 对象。   
+像这样处理认证的中间件模块有 `Passport`、 `express-jwt(推荐)` 和 `express-session`。
 
 ##### n+1问题 
 
@@ -145,6 +147,17 @@ mutation {
 ```
 
 Subscription: 用于设置和保存与服务器的实时连接
+
+
+### Graphqljs框架
+
+这是一个面向前端封装了常用的graphql语法的框架结构，一下列举常用的类型，详细内容[传送门](http://graphql.cn/graphql-js/)
+
++ GraphQLSchema： 定义服务端功能（如query 及 mutation（可选））
++ GraphQLType 创建graphql的types标量类型
++ GraphQLObjectType  创建graphql的types对象类型，我们主要用到的方法
++ GraphQLInterfaceType
+
 
 #### 常用的类库
 

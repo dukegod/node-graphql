@@ -1,7 +1,7 @@
 const lang = [
   {
     'name': 'js',
-    'der': 'a'
+    'der': 'a',
   },
   {
     'name': 'php',
@@ -22,6 +22,10 @@ const lang = [
   {
     'name': 'js',
     'der': 'go'
+  },
+  {
+    'name': 'linux',
+    'der': 'linux commands'
   },
 ]
 
