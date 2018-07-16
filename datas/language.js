@@ -2,30 +2,37 @@ const lang = [
   {
     'name': 'js',
     'der': 'a',
+    'pop': 'yes',
   },
   {
     'name': 'php',
-    'der': 'b'
+    'der': 'b',
+    'pop': 'yes',
   },
   {
     'name': 'c',
-    'der': 'a'
+    'der': 'a',
+    'pop': 'yes',
   },
   {
     'name': 'c++',
-    'der': 'a'
+    'der': 'a',
+    'pop': 'yes',
   },
   {
     'name': 'sql',
-    'der': 'c'
+    'der': 'c',
+    'pop': 'yes',
   },
   {
     'name': 'js',
-    'der': 'go'
+    'der': 'go',
+    'pop': 'no',
   },
   {
     'name': 'linux',
-    'der': 'linux commands'
+    'der': 'linux commands',
+    'pop': 'no',
   },
 ]
 

@@ -1,0 +1,27 @@
+body {
+  margin: 20px auto;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+@keyframes changeColor {
+  0% {
+    background-color: red;
+  }
+  50% {
+    background-color: green;
+  }
+  100% {
+    background-color: yellow;
+  }
+}
+a {
+  color: #00B7FF;
+}
+button {
+  font-size: 16px;
+  padding: 5px 10px;
+}
+button:active,
+button:hover {
+  background-color: black;
+  color: white;
+}

@@ -33,9 +33,11 @@ router.get('/hello',  (req, res, next) => {
 console.log(schema)
 
 router.post('/languages',  (req, res, next) => {
-  // console.log(req)
-  // console.log(req.body)
-  graphql(schema, '{languages { name }}')
+  // console.log('1111', req.body)
+  // console.log('22', JSON.parse(req.body))
+
+
+  graphql(schema, `languages { name }`)
   .then((result) => {
     res.send(JSON.stringify(result, null, 2));
   })
@@ -44,7 +46,7 @@ router.post('/languages',  (req, res, next) => {
 router.post('/commands',  (req, res, next) => {
   // console.log(req)
   // console.log(req.body)
-  graphql(schema, '{commands { id }}')
+  graphql(schema, '{commands { id, title}}')
   .then((result) => {
     res.send(JSON.stringify(result, null, 2));
   })

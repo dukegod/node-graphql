@@ -22,6 +22,16 @@ const indexRouter = require('./routes/index');
 
 const app = express();
 
+// 设置header信息
+app.all('*', function (req, res, next) {
+  console.log(req.cookies);
+  res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:1234');
+  res.header('Access-Control-Allow-Credentials', 'false')
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
 // 解析grapql的请求体，作为text处理
 app.use(bodyParser.text({ type: 'application/graphql' }));
 // parse application/x-www-form-urlencoded
