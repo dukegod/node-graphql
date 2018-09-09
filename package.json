@@ -22,7 +22,6 @@
     "pug": "2.0.0-beta11"
   },
   "devDependencies": {
-    "less": "^3.7.1",
-    "typescript": "^2.9.2"
+    "less": "^3.7.1"
   }
 }
